@@ -4,8 +4,7 @@ for validation and (de)serialization in API requests/responses.
 """
 
 from typing import List, Optional
-from model.basemodel import Base
-
+from Models.basemodel import Base
 
 class Planet_(Base):
     """Pydantic model class meant to validate the data for `Planet` object from

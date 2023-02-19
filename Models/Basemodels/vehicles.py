@@ -4,7 +4,7 @@ for validation and (de)serialization in API requests/responses.
 """
 
 from typing import List, Optional
-from model.basemodel import Base
+from Models.basemodel import Base
 
 
 class Vehicle_(Base):
