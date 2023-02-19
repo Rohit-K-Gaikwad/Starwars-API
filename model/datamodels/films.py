@@ -1,8 +1,18 @@
-from models.basemodel import Base
+"""
+This module defines pydantic (provides Py3 data-classes validation out of the box) model used
+for validation and (de)serialization in API requests/responses.
+"""
+
 from typing import Optional, List
+from model.basemodel import Base
 
 
 class Film_(Base):
+    """Pydantic model class meant to validate the data for `Flims` object from
+        single resource endpoint from starwars API.
+        """
+
+    # attribute fields
     title: str
     episode_id: str
     opening_crawl: str
@@ -18,7 +28,7 @@ class Film_(Base):
 
 
 if __name__ == "__main__":
-    data = {
+    film_data = {
         "title": "A New Hope",
         "episode_id": 4,
         "opening_crawl": "It is a period of civil war.\r\nRebel spaceships, striking\r\nfrom a "
@@ -86,5 +96,5 @@ if __name__ == "__main__":
         "url": "https://swapi.dev/api/films/1/",
     }
 
-    obj = Film_(**data)   # serialization / data validation
-    breakpoint()
+    obj = Film_(**film_data)   # serialization / data validation
+    print(obj)
