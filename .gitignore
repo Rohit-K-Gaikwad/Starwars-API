@@ -3,3 +3,4 @@ venv
 *.pyc
 output.txt
 .idea
+.ipynb_checkpoints
