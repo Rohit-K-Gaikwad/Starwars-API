@@ -4,7 +4,7 @@ for validation and (de)serialization in API requests/responses.
 """
 
 from typing import Optional, List
-from model.basemodel import Base
+from Models.basemodel import Base
 
 
 class Film_(Base):

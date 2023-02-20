@@ -4,8 +4,8 @@ for validation and (de)serialization in API requests/responses.
 """
 
 from typing import List, Optional
-from model.basemodel import Base
 
+from Models.basemodel import Base
 class Character_(Base):
     """Pydantic model class meant to validate the data for `Characters` object from
         single resource endpoint from starwars API.
