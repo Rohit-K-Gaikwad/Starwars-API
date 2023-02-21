@@ -1,19 +1,10 @@
-"""
-ResourceBase
-    Character
-    Film
-    Starship
-"""
-
-
 class ResourceBase(object):
     """
-    Base class representing required methods to be implemented by all resource
-    classes
+        Base class representing required methods to be implemented by all resource classes
     """
 
     resources = ["planets", "starships", "people",
-                 "vehilce", "films", "spacies"]
+                 "vehicle", "films", "species"]
 
     def __init__(self) -> None:
         self.home_url = "https://swapi.dev/"
