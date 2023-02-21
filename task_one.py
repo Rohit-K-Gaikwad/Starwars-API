@@ -20,11 +20,18 @@ import argparse
 import requests
 
 from utils.timing import timeit
-from utils.randgen import ProduceChars
+from utils.randgen import ProduceNumbers
 
 
 def generate_random_numbers(n: int = 15) -> list:
-    """produces n random numbers (default 15)"""
+    """
+    Generates random number for given integer argument.
+    Args:
+        n: how many number do you want
+
+    Returns: list of random numbers
+
+    """
 
     i = 1
     result = []
@@ -38,10 +45,10 @@ def get_url(resource_id: int, resource: str) -> str:
     """
 
    Args:
-       resource_id:
-       resource:
+       resource_id: for complete relative url
+       resource: for complete relative url
 
-   Returns:
+   Returns: absolute url
 
    """
 
@@ -52,7 +59,7 @@ def get_url(resource_id: int, resource: str) -> str:
 
 
 @timeit
-def main():
+def main_task():
 
     parser = argparse.ArgumentParser(
         prog="starwarsAPI",
@@ -87,7 +94,7 @@ def main():
 
     # resources = generate_random_numbers(int(arguments.count))
 
-    obj = ProduceChars(int(arguments.start), int(arguments.end), int(arguments.count))
+    obj = ProduceNumbers(int(arguments.start), int(arguments.end), int(arguments.count))
 
     resources = [element for element in obj]
     print(resources)
@@ -113,13 +120,5 @@ def main():
 
 
 if __name__ == "__main__":
-    """
-   HOME-URL :: https://swapi.dev
-   relative-URL:: /api/people/1
-   
-   URL
-   https://swapi.dev/api/people/1/
-   
-   """
 
-    main()
+    main_task()
