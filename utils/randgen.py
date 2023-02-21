@@ -5,7 +5,7 @@ Create a generator class to produce random numbers
 import random
 
 
-class ProduceChars:
+class ProduceNumbers:
     """Generator class to produce random numbers in a given range"""
 
     def __init__(self, start, end, limit):
