@@ -18,6 +18,7 @@ from pprint import pprint
 
 from utils.randgen import ProduceNumbers
 from utils.fetch_data import hit_url
+from utils.timing import timeit
 
 # resource classes
 from resources.R_Characters import RCharacters
@@ -162,7 +163,7 @@ def vehicles_data():
     print(f"\nGetting list of all Vehicle URLs::")
     pprint(vehicle_urls)
 
-
+@timeit
 def main_task():
     characters_data()
     films_data()
@@ -171,7 +172,7 @@ def main_task():
     starships_data()
     vehicles_data()
 
-
+@timeit
 def random_data():
     """
     Generates Three random numbers and fetch data for each resource's given by user, default:people
