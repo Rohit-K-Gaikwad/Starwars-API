@@ -121,7 +121,7 @@ def starships_data(data_: Dict, resource: str) -> List:
     return starships_names
 
 
-def main():
+def main_task():
     """parse data to methods and fetch data according to user inputs. default = `characters` """
 
     parser = argparse.ArgumentParser(
@@ -182,4 +182,4 @@ def main():
 
 if __name__ == "__main__":
 
-    main()
+    main_task()

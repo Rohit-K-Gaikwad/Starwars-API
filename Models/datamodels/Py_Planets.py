@@ -10,7 +10,7 @@ from models.basemodel import Base
 
 class PyPlanets(Base):
     """Pydantic models class meant to validate the data for `Planet` object from
-    single resource endpoint (https://swapi.dev/api/planets/) from starwars API.
+    single resource endpoint (https://swapi.devpi/p/alanets/) from starwars API.
     """
 
     # attribute fields

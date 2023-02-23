@@ -71,8 +71,8 @@ def films_data():
 
     film_data = film_obj.get_sample_data()
     film_data = PyFilms(**film_data)
-    print(f"\nValidating Film Data :: \n")
-    pprint(film_data)
+    print(f"\nValidating Film Data is successfully completed\n")
+    # pprint(film_data)
 
     global film_urls
     film_urls = film_obj.get_resource_urls()
@@ -194,53 +194,56 @@ def random_data():
                                  "starships",
                                  "species",
                                  "vehicles"])
+    parser.add_argument("-p", "--people",
+                        default="people",
+                        )
     argument = parser.parse_args()
     print(f"\nPassed arguments are -> {argument}")
 
     obj = ProduceNumbers(argument.start, argument.end, argument.limit)
 
-    resources = [element for element in obj]
+    random_resources_numbers = [element for element in obj]
 
-    for item in resources:
+    for number in random_resources_numbers:
         if argument.resource == 'films':
-            print(f"\nGenerating the data for {argument.resource} id :-> {item}\n")
+            print(f"\nGenerating the data for {argument.resource} id :-> {number}\n")
             # response_url = get_url(character_urls[item], argument.resource)
-            data = hit_url(film_urls[item])
+            data = hit_url(film_urls[number])
             data = data.json()
             pprint(data)
 
         if argument.resource == 'planets':
-            print(f"\nGenerating the data for {argument.resource} id :-> {item}\n")
+            print(f"\nGenerating the data for {argument.resource} id :-> {number}\n")
             # response_url = get_url(character_urls[item], argument.resource)
-            data = hit_url(planet_urls[item])
+            data = hit_url(planet_urls[number])
             data = data.json()
             pprint(data)
 
         if argument.resource == 'species':
-            print(f"\nGenerating the data for {argument.resource} id :-> {item}\n")
+            print(f"\nGenerating the data for {argument.resource} id :-> {number}\n")
             # response_url = get_url(character_urls[item], argument.resource)
-            data = hit_url(specie_urls[item])
+            data = hit_url(specie_urls[number])
             data = data.json()
             pprint(data)
 
         if argument.resource == 'starships':
-            print(f"\nGenerating the data for {argument.resource} id :-> {item}\n")
+            print(f"\nGenerating the data for {argument.resource} id :-> {number}\n")
             # response_url = get_url(character_urls[item], argument.resource)
-            data = hit_url(starship_urls[item])
+            data = hit_url(starship_urls[number])
             data = data.json()
             pprint(data)
 
         if argument.resource == 'vehicles':
-            print(f"\nGenerating the data for {argument.resource} id :-> {item}\n")
+            print(f"\nGenerating the data for {argument.resource} id :-> {number}\n")
             # response_url = get_url(character_urls[item], argument.resource)
-            data = hit_url(vehicle_urls[item])
+            data = hit_url(vehicle_urls[number])
             data = data.json()
             pprint(data)
 
         else:
-            print(f"\nGenerating the data for {argument.resource} id :-> {item}\n")
+            print(f"\nGenerating the data for {argument.resource} id :-> {number}\n")
             # response_url = get_url(character_urls[item], argument.resource)
-            data = hit_url(character_urls[item])
+            data = hit_url(character_urls[number])
             data = data.json()
             pprint(data)
 
