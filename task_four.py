@@ -17,17 +17,38 @@ For example - "A new hope" movie has following resource endpoints -
 
 """
 
+from utils.fetch_data import hit_url
 from resources.R_Films import RFilms   # resource model
-from models.datamodels.Py_Films import PyFilms # pydantic model
+from models.datamodels.Py_Films import PyFilms  # pydantic model
 
 from dal.db_conn_helper import get_db_conn
 from dal.dml import insert_resource
+
+
+def char_(char_data_):
+    char_data = []
+    for url in char_data_:
+        char = hit_url(url)
+        charr = char.json()
+        char_data.append(charr.get("name"))
+
+    return char_data
+
+
+def planet_(pla_data_):
+    pla_data = []
+    for url in pla_data_:
+        planet = hit_url(url)
+        plaa = planet.json()
+        pla_data.append(plaa.get("name"))
+    return pla_data
 
 
 if __name__ == "__main__":
     data = RFilms().get_sample_data(id_=1)
     film_data = PyFilms(**data)
     conn = get_db_conn()   # create DB connection
+    char = film_data.characters
 
     film_columns = [
         "title",
@@ -39,6 +60,8 @@ if __name__ == "__main__":
         "created",
         "edited",
         "url",
+        "characters",
+        "planets",
     ]
 
     film_values = [
@@ -51,6 +74,8 @@ if __name__ == "__main__":
         film_data.created.strftime("%y-%m-%d"),
         film_data.edited.strftime("%y-%m-%d"),
         film_data.url,
+        str(char_(film_data.characters)),
+        str(planet_(film_data.planets)),
 
     ]
     breakpoint()
