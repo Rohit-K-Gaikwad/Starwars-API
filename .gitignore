@@ -1,0 +1,8 @@
+dal
+venv
+*.log
+*.pyc
+*.sql
+output.txt
+.idea
+.ipynb_checkpoints
