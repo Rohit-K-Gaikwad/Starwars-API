@@ -45,6 +45,7 @@ def store_characters():
         "eye_color",
         "birth_year",
         "gender",
+        "homeworld"
     ]
 
     for character in characters:
@@ -60,6 +61,7 @@ def store_characters():
             char.eye_color,
             char.birth_year,
             char.gender,
+            char.homeworld
             ]
 
         char_id = int(character.split("/")[-2])
@@ -295,7 +297,7 @@ if __name__ == "__main__":
     # column list can be once created and re-used
 
     character_data = store_characters()
-    planet_data = store_planets()
-    starships_data = store_starships()
-    vehicle_data = store_vehicles()
-    species_data = store_species()
+    # planet_data = store_planets()
+    # starships_data = store_starships()
+    # vehicle_data = store_vehicles()
+    # species_data = store_species()

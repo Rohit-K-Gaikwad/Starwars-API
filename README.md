@@ -14,13 +14,16 @@ In star_warsAPI there are some resources
   5) Species
   6) Films
 
-**# TASK - 1**
+````
+# TASK - 1 
     
 - The Star Wars API lists 82 main characters in the Star Wars saga. For the first task, we would like you to use a 
        random number generator that picks a number between 1-82. Using these random numbers you will be pulling 15 
        characters from the API using Python.
+````
 
-**# TASK - 2**
+````
+# TASK - 2
 
 - **Main Task:**
   - We have to fetch the data of first film from swapi.dev
@@ -32,9 +35,11 @@ In star_warsAPI there are some resources
   - Then we have to list down only first name and last name of the character who worked in 1st film [ LIST FORMAT]
   - Also we have to list down the names of planets and vehicles which are in 1st film in [ LIST FORMAT]
   
+````
 
+````
+# TASK - 3
 
-**# TASK - 3**
 - **Main Task:** 
   - Create Package called resources and define resouce accessing class for each resouce seperatly to get data.
   - Create Package called models and define pydantic class for each resource and validate data.
@@ -42,12 +47,16 @@ In star_warsAPI there are some resources
   - Pull data from random 3 "singular" resource URLs and Print them in pprint format.
   - Convert the script into CLI Application.
         
-**# Task - 4**
+````
+
+````
+# Task - 4
 - **Main Task:**
   - Create MySQL Queries for each resources
   - Create Database named as starwar_db using MySQL Workbench.
   - Push all resouces data on starwar_db database.
         
+````
     
 ## Project Structure
 
