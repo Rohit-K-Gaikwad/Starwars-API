@@ -1,19 +1,15 @@
 ### THIS IS A COMMAND LINE APPLICATION TO FETCH THE DATA FROM SWAPI.DEV
 
-#### This is a project that pulls the data of swapi.dev
+#### This is a Mini-project that pulls the data(resoureces) of starwars-Movie series.
 
-**Terminology:** 
-> **Virtualenv :** Virtual Environment - We created one virtual environment to keep our project dependencies
-
-
-In star_warsAPI there are some resources
+In star_warsAPI there are following resources:
   1) People
   2) Vehicles 
   3) Starships
   4) Planets 
   5) Species
   6) Films
-
+#### Tasks to do in this projects: 
 ````
 # TASK - 1 
     
@@ -65,6 +61,8 @@ starwarsAPI (project root directory)
   - task_one.py 
   - task_two.py
   - task_two_cli.py
+  - task_three.py
+  - Task_four.py
   - requirements.txt
   - README.md 
   - venv  
