@@ -46,3 +46,13 @@ def fetch_data(urls: List) -> Union[List, Dict]:
         data.append(res.json())
 
     return data
+
+
+def fetch_data_json(url: str) -> Dict:
+    """hits the API endpoint and returns response if successful"""
+
+    response = requests.get(url)
+    if response.status_code != 200:
+        response.raise_for_status()
+    else:
+        return response.json()

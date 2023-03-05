@@ -69,8 +69,8 @@ def main():
 
    """
     pool = ThreadPool(10)
-    results = pool.map(fetch_data, urls)
-
+    results = pool.map(fetch_data, get_urls)
+    breakpoint()
     print(results)
 
 

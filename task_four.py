@@ -16,6 +16,9 @@ For example - "A new hope" movie has following resource endpoints -
 
 
 """
+from multiprocessing.pool import ThreadPool
+from pydantic import parse_obj_as
+from typing import List
 
 from resources.R_Films import RFilms   # resource model
 from models.datamodels.Py_Films import PyFilms  # pydantic model
@@ -27,7 +30,7 @@ from models.datamodels.Py_Starships import PyStarships
 
 from dal.db_conn_helper import get_db_conn
 from dal.dml import insert_resource
-from utils.fetch_data import hit_url
+from utils.fetch_data import hit_url,fetch_data_json
 from utils.timing import timeit
 
 
@@ -37,41 +40,42 @@ def store_characters():
     characters_data = []
 
     char_columns = [
-        "name",
-        "height",
-        "mass",
-        "hair_color",
-        "skin_color",
-        "eye_color",
-        "birth_year",
-        "gender",
-        "homeworld"
-    ]
+                    "name",
+                    "height",
+                    "mass",
+                    "hair_color",
+                    "skin_color",
+                    "eye_color",
+                    "birth_year",
+                    "gender",
+                    "homeworld"
+                    ]
 
-    for character in characters:
-        response = hit_url(character)
-        char = response.json()
-        char = PyCharacters(**char)
+    pool = ThreadPool(10)
+    char_data_list = pool.map(fetch_data_json, characters)
+    char_data = parse_obj_as(List[PyCharacters],char_data_list)
+
+    for char in char_data:
         char_values = [
-            char.name,
-            char.height,
-            char.mass,
-            char.hair_color,
-            char.skin_color,
-            char.eye_color,
-            char.birth_year,
-            char.gender,
-            char.homeworld
-            ]
+                        char.name,
+                        char.height,
+                        char.mass,
+                        char.hair_color,
+                        char.skin_color,
+                        char.eye_color,
+                        char.birth_year,
+                        char.gender,
+                        char.homeworld
+                        ]
+        char_id = int(char.url.split("/")[-2])
 
-        char_id = int(character.split("/")[-2])
         result = insert_resource(
-            "characters",
-            "char_id",
-            char_id,
-            char_columns,
-            char_values
-        )
+                            "characters",
+                            "char_id",
+                            char_id,
+                            char_columns,
+                            char_values
+                            )
         characters_data.append(char)
     return characters_data
 
@@ -82,40 +86,38 @@ def store_planets():
     planets_data = []
 
     planets_columns = [
-        "name",
-        "orbital_period",
-        "gravity",
-        "climate",
-        "rotation_period",
-        "surface_water",
-        "population",
-        "terrain",
-    ]
+                    "name",
+                    "orbital_period",
+                    "gravity",
+                    "climate",
+                    "rotation_period",
+                    "surface_water",
+                    "population",
+                    "terrain",
+                ]
+    pool = ThreadPool(10)
+    planet_data_list = pool.map(fetch_data_json, planets)
+    planet_data = parse_obj_as(List[PyPlanets], planet_data_list)
 
-    for planet in planets:
-        response = hit_url(planet)
-        pla_ = response.json()
-        pla_ = PyPlanets(**pla_)
+    for pla_ in planet_data:
         planets_values = [
-            pla_.name,
-            pla_.orbital_period,
-            pla_.gravity,
-            pla_.climate,
-            pla_.rotation_period,
-            pla_.surface_water,
-            pla_.population,
-            pla_.terrain,
-
-            ]
-
-        planet_id = int(planet.split("/")[-2])
+                        pla_.name,
+                        pla_.orbital_period,
+                        pla_.gravity,
+                        pla_.climate,
+                        pla_.rotation_period,
+                        pla_.surface_water,
+                        pla_.population,
+                        pla_.terrain,
+                    ]
+        planet_id = int(pla_.url.split("/")[-2])
         result = insert_resource(
-            "planet",
-            "planet_id",
-            planet_id,
-            planets_columns,
-            planets_values
-        )
+                                "planet",
+                                "planet_id",
+                                planet_id,
+                                planets_columns,
+                                planets_values
+                            )
         planets_data.append(pla_)
     return planets_data
 
@@ -126,45 +128,44 @@ def store_starships():
     starships_data = []
 
     starships_columns = [
-        "name",
-        "MGLT",
-        "cargo_capacity",
-        "consumables",
-        "cost_in_credits",
-        "hyperdrive_rating",
-        "manufacturer",
-        "model",
-        "starship_class",
-        "passengers"
-    ]
+                        "name",
+                        "MGLT",
+                        "cargo_capacity",
+                        "consumables",
+                        "cost_in_credits",
+                        "hyperdrive_rating",
+                        "manufacturer",
+                        "model",
+                        "starship_class",
+                        "passengers"
+                    ]
+    pool = ThreadPool(10)
+    starships_data_list = pool.map(fetch_data_json, starships)
+    starshipsdata = parse_obj_as(List[PyStarships], starships_data_list)
 
-    for starship in starships:
-        response = hit_url(starship)
-        star_ = response.json()
-        star_ = PyStarships(**star_)
+    for star_ in starshipsdata:
         starships_values = [
-            star_.name,
-            star_.MGLT,
-            star_.cargo_capacity,
-            star_.consumables,
-            star_.cost_in_credits,
-            # star_.crew,
-            star_.hyperdrive_rating,
-            star_.manufacturer,
-            # star_.max_atmosphering_speed,
-            star_.model,
-            star_.starship_class,
-            star_.passengers
-
-        ]
-        starship_id = int(starship.split("/")[-2])
+                            star_.name,
+                            star_.MGLT,
+                            star_.cargo_capacity,
+                            star_.consumables,
+                            star_.cost_in_credits,
+                            # star_.crew,
+                            star_.hyperdrive_rating,
+                            star_.manufacturer,
+                            # star_.max_atmosphering_speed,
+                            star_.model,
+                            star_.starship_class,
+                            star_.passengers
+                        ]
+        starship_id = int(star_.url.split("/")[-2])
         result = insert_resource(
-            "starship",
-            "starship_id",
-            starship_id,
-            starships_columns,
-            starships_values
-        )
+                                "starship",
+                                "starship_id",
+                                starship_id,
+                                starships_columns,
+                                starships_values
+                            )
         starships_data.append(star_)
     return starships_data
 
@@ -185,11 +186,10 @@ def store_vehicles():
         "model",
         "vehicle_class",
     ]
-
-    for vehicle in vehicles:
-        response = hit_url(vehicle)
-        veh_ = response.json()
-        veh_ = PyVehicles(**veh_)
+    pool = ThreadPool(10)
+    vehicle_data_list = pool.map(fetch_data_json, vehicles)
+    vehiclesdata = parse_obj_as(List[PyVehicles], vehicle_data_list)
+    for veh_ in vehiclesdata:
         vehicles_values = [
             veh_.name,
             veh_.cargo_capacity,
@@ -201,7 +201,7 @@ def store_vehicles():
             veh_.model,
             veh_.vehicle_class
         ]
-        vehicle_id = int(vehicle.split("/")[-2])
+        vehicle_id = int(veh_.url.split("/")[-2])
         result = insert_resource(
             "vehicle",
             "vehicle_id",
@@ -228,11 +228,10 @@ def store_species():
         "hair_colors",
         "skin_colors",
     ]
-
-    for specie in species:
-        response = hit_url(specie)
-        spe_ = response.json()
-        spe_ = PySpecies(**spe_)
+    pool = ThreadPool(10)
+    species_data_list = pool.map(fetch_data_json, species)
+    speciesdata = parse_obj_as(List[PySpecies], species_data_list)
+    for spe_ in speciesdata:
         species_values = [
             spe_.name,
             spe_.average_height,
@@ -242,10 +241,9 @@ def store_species():
             spe_.eye_colors,
             spe_.hair_colors,
             spe_.skin_colors
-
             ]
 
-        specie_id = int(specie.split("/")[-2])
+        specie_id = int(spe_.url.split("/")[-2])
         result = insert_resource(
             "species",
             "species_id",
@@ -297,7 +295,7 @@ if __name__ == "__main__":
     # column list can be once created and re-used
 
     character_data = store_characters()
-    # planet_data = store_planets()
-    # starships_data = store_starships()
-    # vehicle_data = store_vehicles()
-    # species_data = store_species()
+    planet_data = store_planets()
+    starships_data = store_starships()
+    vehicle_data = store_vehicles()
+    species_data = store_species()
