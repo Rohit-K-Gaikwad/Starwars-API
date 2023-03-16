@@ -1,6 +1,6 @@
 ### THIS IS A COMMAND LINE APPLICATION TO FETCH THE DATA FROM SWAPI.DEV
 
-#### This is a Mini-project that pulls the data(resoureces) of starwars-Movie series.
+#### This is a Mini-project that pulls the data(resources) of starwars-Movie series.
 
 In star_warsAPI there are following resources:
   1) People
@@ -9,7 +9,7 @@ In star_warsAPI there are following resources:
   4) Planets 
   5) Species
   6) Films
-#### Tasks to do in this projects: 
+#### Tasks to do in this project: 
 ````
 # TASK - 1 
     
@@ -58,13 +58,13 @@ In star_warsAPI there are following resources:
 
 ```
 ├── Starwars-API (project root)
-│ ├── utils (your custom package)
+│ ├── utils (Custom package)
 │ │ ├── __init__.py
 │ │ ├── fetch_data.py
 │ │ ├── randgen.py
 │ │ ├── timing.py
 | |
-│ ├── models(your custom package)
+│ ├── models(data validation package)
 | | ├── __init__.py
 | | ├── basemodel.py
 | | ├── datamodels
@@ -76,7 +76,7 @@ In star_warsAPI there are following resources:
 | | | ├──  Py_Starships.py
 | | | ├──  Py_Vehicles.pyy
 | |
-│ ├──resources (resources files)
+│ ├──resources (resources package)
 | | ├── __init__.py
 | | ├── base.py
 | | ├── R_Characters.py
@@ -88,8 +88,10 @@ In star_warsAPI there are following resources:
 |
 ├── task_one.py (entry-point for task 1)
 ├── task_two.py (entry-point for task 2)
-├── task_three.py
-├── task_four.py
-├── requirements.txt 
+├── task_three.py (entry-point for task 3
+├── task_four.py (entry-point for task 4
+├── requirements.txt (package requirements)
+├── database.sql (creating database tables)
+├── SWAPI_Flask.py (Converting SWAPI project to Flask Application)
 ├── README.md (your documentation on project)
 ```
