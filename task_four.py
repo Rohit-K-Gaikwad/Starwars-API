@@ -30,7 +30,7 @@ from models.datamodels.Py_Starships import PyStarships
 
 from dal.db_conn_helper import get_db_conn
 from dal.dml import insert_resource
-from utils.fetch_data import hit_url,fetch_data_json
+from utils.fetch_data import fetch_data_json
 from utils.timing import timeit
 
 
@@ -53,7 +53,7 @@ def store_characters():
 
     pool = ThreadPool(10)
     char_data_list = pool.map(fetch_data_json, characters)
-    char_data = parse_obj_as(List[PyCharacters],char_data_list)
+    char_data = parse_obj_as(List[PyCharacters], char_data_list)
 
     for char in char_data:
         char_values = [
@@ -256,7 +256,7 @@ def store_species():
 
 
 if __name__ == "__main__":
-    data = RFilms().get_sample_data(id_=1)
+    data = RFilms().get_sample_data(1)
     film_data = PyFilms(**data)
 
     # create DB connection
@@ -264,6 +264,7 @@ if __name__ == "__main__":
 
     film_columns = [
         "title",
+        "episode_id",
         "opening_crawl",
         "director",
         "producer",
@@ -275,6 +276,7 @@ if __name__ == "__main__":
 
     film_values = [
         film_data.title,
+        film_data.episode_id,
         film_data.opening_crawl,
         film_data.director,
         film_data.producer,
@@ -285,7 +287,7 @@ if __name__ == "__main__":
     ]
 
     result = insert_resource(
-        "film", "film_id", film_data.episode_id, film_columns, film_values
+        "film", "film_id", int(film_data.episode_id), film_columns, film_values
     )
 
     # TODO
