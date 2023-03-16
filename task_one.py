@@ -59,7 +59,7 @@ def get_url(resource_id: int, resource: str) -> str:
 
 
 @timeit
-def main_task():
+def task_one():
 
     parser = argparse.ArgumentParser(
         prog="starwarsAPI",
@@ -116,9 +116,9 @@ def main_task():
         # capturing name from dict object
         data.append(result.get("name"))
 
-    print(data)
+    return data
 
 
 if __name__ == "__main__":
 
-    main_task()
+    task_one()
