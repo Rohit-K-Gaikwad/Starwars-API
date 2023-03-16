@@ -56,39 +56,40 @@ In star_warsAPI there are following resources:
     
 ## Project Structure
 
-starwarsAPI (project root directory)
-
-  - task_one.py 
-  - task_two.py
-  - task_two_cli.py
-  - task_three.py
-  - Task_four.py
-  - requirements.txt
-  - README.md 
-  - venv  
-  - utils
-      - --init--.py
-      - fetch_data.py
-      - randgen.py
-      - timing.py
-  - models
-      - --init--.py
-      - - basemodel.py
-      - datamodels
-          - --init--.py
-          - Py_Characters.py
-          - Py_Films.py
-          - Py_Planets.py
-          - Py_Species.py
-          - Py_Starships.py
-          - Py_Vehicles.pyy
-      
-  - resources
-      - --init--.py
-      - base.py
-      - R_Characters.py
-      - R_Films.py
-      - R_Planets.py
-      - R_Species.py
-      - R_Starships.py
-      - R_Vehicles.py
+```
+├── Starwars-API (project root)
+│ ├── utils (your custom package)
+│ │ ├── __init__.py
+│ │ ├── fetch_data.py
+│ │ ├── randgen.py
+│ │ ├── timing.py
+| |
+│ ├── models(your custom package)
+| | ├── __init__.py
+| | ├── basemodel.py
+| | ├── datamodels
+| | | ├── __init__.py
+| | | ├──  Py_Characters.py
+| | | ├──  Py_Films.py
+| | | ├──  Py_Planets.py
+| | | ├──  Py_Species.py
+| | | ├──  Py_Starships.py
+| | | ├──  Py_Vehicles.pyy
+| |
+│ ├──resources (resources files)
+| | ├── __init__.py
+| | ├── base.py
+| | ├── R_Characters.py
+| | ├── R_Films.py
+| | ├── R_Planets.py
+| | ├── R_Species.py
+| | ├── R_Starships.py
+| | ├── R_Vehicles.py
+|
+├── task_one.py (entry-point for task 1)
+├── task_two.py (entry-point for task 2)
+├── task_three.py
+├── task_four.py
+├── requirements.txt 
+├── README.md (your documentation on project)
+```
