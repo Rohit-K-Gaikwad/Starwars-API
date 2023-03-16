@@ -57,6 +57,7 @@ def characters_data():
     character_urls = character_obj.get_resource_urls()
     print(f"\nGetting list of all Character URLs::")
     pprint(character_urls)
+    return character_urls
 
 
 def films_data():
@@ -78,6 +79,7 @@ def films_data():
     film_urls = film_obj.get_resource_urls()
     print(f"\nGetting list of all Film URLs::")
     pprint(film_urls)
+    return film_urls
 
 
 def planets_data():
@@ -99,6 +101,7 @@ def planets_data():
     planet_urls = planet_obj.get_resource_urls()
     print(f"\nGetting list of all Planet URLs::")
     pprint(planet_urls)
+    return planet_urls
 
 
 def species_data():
@@ -120,6 +123,7 @@ def species_data():
     specie_urls = specie_obj.get_resource_urls()
     print(f"\nGetting list of all Species URLs::")
     pprint(specie_urls)
+    return specie_urls
 
 
 def starships_data():
@@ -141,6 +145,7 @@ def starships_data():
     starship_urls = starship_obj.get_resource_urls()
     print(f"\nGetting list of all Starship URLs::")
     pprint(starship_urls)
+    return starship_urls
 
 
 def vehicles_data():
@@ -162,6 +167,7 @@ def vehicles_data():
     vehicle_urls = vehicle_obj.get_resource_urls()
     print(f"\nGetting list of all Vehicle URLs::")
     pprint(vehicle_urls)
+    return vehicle_urls
 
 @timeit
 def main_task():
@@ -194,9 +200,6 @@ def random_data():
                                  "starships",
                                  "species",
                                  "vehicles"])
-    parser.add_argument("-p", "--people",
-                        default="people",
-                        )
     argument = parser.parse_args()
     print(f"\nPassed arguments are -> {argument}")
 
