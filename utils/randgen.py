@@ -15,6 +15,6 @@ class ProduceNumbers:
 
     def __iter__(self):
         current = self.start
-        while current <= self.limit:
+        while current <= self.limit+1:
             yield random.randint(self.start, self.end)
             current += 1
