@@ -39,8 +39,8 @@ from models.datamodels.Py_Starships import PyStarships
 
 def characters_data():
     """
-        Getting count of Characters; Validating Characters data; Generates list of all Characters
-        URLs
+    Getting count of Characters; Validating Characters data; Generates list of all Characters
+    URLs
     """
 
     character_obj = RCharacters()
@@ -62,8 +62,8 @@ def characters_data():
 
 def films_data():
     """
-        Getting count of Films; Validating Films data; Generates list of all Films
-        URLs
+    Getting count of Films; Validating Films data; Generates list of all Films
+    URLs
     """
     film_obj = RFilms()
     total_films = film_obj.get_count()
@@ -84,8 +84,8 @@ def films_data():
 
 def planets_data():
     """
-        Getting count of Planets; Validating Planets data; Generates list of all Planets
-        URLs
+    Getting count of Planets; Validating Planets data; Generates list of all Planets
+    URLs
     """
     planet_obj = RPlanets()
     total_planets = planet_obj.get_count()
@@ -106,8 +106,8 @@ def planets_data():
 
 def species_data():
     """
-        Getting count of Species; Validating Species data; Generates list of all Species
-        URLs
+    Getting count of Species; Validating Species data; Generates list of all Species
+    URLs
     """
     specie_obj = RSpecies()
     total_species = specie_obj.get_count()
@@ -128,8 +128,8 @@ def species_data():
 
 def starships_data():
     """
-        Getting count of Starships; Validating Starships data; Generates list of all Starships
-        URLs
+    Getting count of Starships; Validating Starships data; Generates list of all Starships
+    URLs
     """
     starship_obj = RStarships()
     total_starships = starship_obj.get_count()
@@ -150,8 +150,8 @@ def starships_data():
 
 def vehicles_data():
     """
-        Getting count of Vehicles; Validating Vehicles data; Generates list of all Vehicles
-        URLs
+    Getting count of Vehicles; Validating Vehicles data; Generates list of all Vehicles
+    URLs
     """
     vehicle_obj = RVehicles()
     total_vehicles = vehicle_obj.get_count()
@@ -169,6 +169,7 @@ def vehicles_data():
     pprint(vehicle_urls)
     return vehicle_urls
 
+
 @timeit
 def main_task():
     characters_data()
@@ -178,6 +179,7 @@ def main_task():
     starships_data()
     vehicles_data()
 
+
 @timeit
 def random_data():
     """
@@ -186,20 +188,15 @@ def random_data():
 
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument("-l", "--limit",
-                        default=3, type=int)
-    parser.add_argument("-s", "--start",
-                        default=1, type=int)
-    parser.add_argument("-e", "--end",
-                        default=8, type=int)
-    parser.add_argument("-r", "--resource",
-                        default="people",
-                        choices=["films",
-                                 "planets",
-                                 "people",
-                                 "starships",
-                                 "species",
-                                 "vehicles"])
+    parser.add_argument("-l", "--limit", default=3, type=int)
+    parser.add_argument("-s", "--start", default=1, type=int)
+    parser.add_argument("-e", "--end", default=8, type=int)
+    parser.add_argument(
+        "-r",
+        "--resource",
+        default="people",
+        choices=["films", "planets", "people", "starships", "species", "vehicles"],
+    )
     argument = parser.parse_args()
     print(f"\nPassed arguments are -> {argument}")
 
@@ -208,35 +205,35 @@ def random_data():
     random_resources_numbers = [element for element in obj]
 
     for number in random_resources_numbers:
-        if argument.resource == 'films':
+        if argument.resource == "films":
             print(f"\nGenerating the data for {argument.resource} id :-> {number}\n")
             # response_url = get_url(character_urls[item], argument.resource)
             data = hit_url(film_urls[number])
             data = data.json()
             pprint(data)
 
-        if argument.resource == 'planets':
+        if argument.resource == "planets":
             print(f"\nGenerating the data for {argument.resource} id :-> {number}\n")
             # response_url = get_url(character_urls[item], argument.resource)
             data = hit_url(planet_urls[number])
             data = data.json()
             pprint(data)
 
-        if argument.resource == 'species':
+        if argument.resource == "species":
             print(f"\nGenerating the data for {argument.resource} id :-> {number}\n")
             # response_url = get_url(character_urls[item], argument.resource)
             data = hit_url(specie_urls[number])
             data = data.json()
             pprint(data)
 
-        if argument.resource == 'starships':
+        if argument.resource == "starships":
             print(f"\nGenerating the data for {argument.resource} id :-> {number}\n")
             # response_url = get_url(character_urls[item], argument.resource)
             data = hit_url(starship_urls[number])
             data = data.json()
             pprint(data)
 
-        if argument.resource == 'vehicles':
+        if argument.resource == "vehicles":
             print(f"\nGenerating the data for {argument.resource} id :-> {number}\n")
             # response_url = get_url(character_urls[item], argument.resource)
             data = hit_url(vehicle_urls[number])

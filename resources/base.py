@@ -1,10 +1,9 @@
 class ResourceBase(object):
     """
-        Base class representing required methods to be implemented by all resource classes
+    Base class representing required methods to be implemented by all resource classes
     """
 
-    resources = ["planets", "starships", "people",
-                 "vehicle", "films", "species"]
+    resources = ["planets", "starships", "people", "vehicle", "films", "species"]
 
     def __init__(self) -> None:
         self.home_url = "https://swapi.dev/"

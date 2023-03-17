@@ -55,19 +55,19 @@ def fetch_data(url):
 def main():
     """
 
-   Returns:
+    Returns:
 
-   NOTE:
-       ThreadPool object can be created with whatever number of threads
-       we would like.
-       For example, `pool = ThreadPool(100)`
+    NOTE:
+        ThreadPool object can be created with whatever number of threads
+        we would like.
+        For example, `pool = ThreadPool(100)`
 
-       `pool` object has `map` method which distributes the collection elements
-       across available threads in pool.
+        `pool` object has `map` method which distributes the collection elements
+        across available threads in pool.
 
-       `pool.map()` function returns a list object
+        `pool.map()` function returns a list object
 
-   """
+    """
     pool = ThreadPool(10)
     results = pool.map(fetch_data, get_urls)
     breakpoint()

@@ -25,4 +25,3 @@ cursor.execute("SHOW DATABASES")
 results = cursor.fetchall()
 for result in results:
     print(result)
-

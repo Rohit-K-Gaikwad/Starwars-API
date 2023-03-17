@@ -20,7 +20,7 @@ from multiprocessing.pool import ThreadPool
 from pydantic import parse_obj_as
 from typing import List
 
-from resources.R_Films import RFilms   # resource model
+from resources.R_Films import RFilms  # resource model
 from models.datamodels.Py_Films import PyFilms  # pydantic model
 from models.datamodels.Py_Characters import PyCharacters
 from models.datamodels.Py_Planets import PyPlanets
@@ -40,16 +40,16 @@ def store_characters():
     characters_data = []
 
     char_columns = [
-                    "name",
-                    "height",
-                    "mass",
-                    "hair_color",
-                    "skin_color",
-                    "eye_color",
-                    "birth_year",
-                    "gender",
-                    "homeworld"
-                    ]
+        "name",
+        "height",
+        "mass",
+        "hair_color",
+        "skin_color",
+        "eye_color",
+        "birth_year",
+        "gender",
+        "homeworld",
+    ]
 
     pool = ThreadPool(10)
     char_data_list = pool.map(fetch_data_json, characters)
@@ -57,25 +57,21 @@ def store_characters():
 
     for char in char_data:
         char_values = [
-                        char.name,
-                        char.height,
-                        char.mass,
-                        char.hair_color,
-                        char.skin_color,
-                        char.eye_color,
-                        char.birth_year,
-                        char.gender,
-                        char.homeworld
-                        ]
+            char.name,
+            char.height,
+            char.mass,
+            char.hair_color,
+            char.skin_color,
+            char.eye_color,
+            char.birth_year,
+            char.gender,
+            char.homeworld,
+        ]
         char_id = int(char.url.split("/")[-2])
 
         result = insert_resource(
-                            "characters",
-                            "char_id",
-                            char_id,
-                            char_columns,
-                            char_values
-                            )
+            "characters", "char_id", char_id, char_columns, char_values
+        )
         characters_data.append(char)
     return characters_data
 
@@ -86,38 +82,34 @@ def store_planets():
     planets_data = []
 
     planets_columns = [
-                    "name",
-                    "orbital_period",
-                    "gravity",
-                    "climate",
-                    "rotation_period",
-                    "surface_water",
-                    "population",
-                    "terrain",
-                ]
+        "name",
+        "orbital_period",
+        "gravity",
+        "climate",
+        "rotation_period",
+        "surface_water",
+        "population",
+        "terrain",
+    ]
     pool = ThreadPool(10)
     planet_data_list = pool.map(fetch_data_json, planets)
     planet_data = parse_obj_as(List[PyPlanets], planet_data_list)
 
     for pla_ in planet_data:
         planets_values = [
-                        pla_.name,
-                        pla_.orbital_period,
-                        pla_.gravity,
-                        pla_.climate,
-                        pla_.rotation_period,
-                        pla_.surface_water,
-                        pla_.population,
-                        pla_.terrain,
-                    ]
+            pla_.name,
+            pla_.orbital_period,
+            pla_.gravity,
+            pla_.climate,
+            pla_.rotation_period,
+            pla_.surface_water,
+            pla_.population,
+            pla_.terrain,
+        ]
         planet_id = int(pla_.url.split("/")[-2])
         result = insert_resource(
-                                "planet",
-                                "planet_id",
-                                planet_id,
-                                planets_columns,
-                                planets_values
-                            )
+            "planet", "planet_id", planet_id, planets_columns, planets_values
+        )
         planets_data.append(pla_)
     return planets_data
 
@@ -128,44 +120,40 @@ def store_starships():
     starships_data = []
 
     starships_columns = [
-                        "name",
-                        "MGLT",
-                        "cargo_capacity",
-                        "consumables",
-                        "cost_in_credits",
-                        "hyperdrive_rating",
-                        "manufacturer",
-                        "model",
-                        "starship_class",
-                        "passengers"
-                    ]
+        "name",
+        "MGLT",
+        "cargo_capacity",
+        "consumables",
+        "cost_in_credits",
+        "hyperdrive_rating",
+        "manufacturer",
+        "model",
+        "starship_class",
+        "passengers",
+    ]
     pool = ThreadPool(10)
     starships_data_list = pool.map(fetch_data_json, starships)
     starshipsdata = parse_obj_as(List[PyStarships], starships_data_list)
 
     for star_ in starshipsdata:
         starships_values = [
-                            star_.name,
-                            star_.MGLT,
-                            star_.cargo_capacity,
-                            star_.consumables,
-                            star_.cost_in_credits,
-                            # star_.crew,
-                            star_.hyperdrive_rating,
-                            star_.manufacturer,
-                            # star_.max_atmosphering_speed,
-                            star_.model,
-                            star_.starship_class,
-                            star_.passengers
-                        ]
+            star_.name,
+            star_.MGLT,
+            star_.cargo_capacity,
+            star_.consumables,
+            star_.cost_in_credits,
+            # star_.crew,
+            star_.hyperdrive_rating,
+            star_.manufacturer,
+            # star_.max_atmosphering_speed,
+            star_.model,
+            star_.starship_class,
+            star_.passengers,
+        ]
         starship_id = int(star_.url.split("/")[-2])
         result = insert_resource(
-                                "starship",
-                                "starship_id",
-                                starship_id,
-                                starships_columns,
-                                starships_values
-                            )
+            "starship", "starship_id", starship_id, starships_columns, starships_values
+        )
         starships_data.append(star_)
     return starships_data
 
@@ -199,15 +187,11 @@ def store_vehicles():
             veh_.manufacturer,
             veh_.max_atmosphering_speed,
             veh_.model,
-            veh_.vehicle_class
+            veh_.vehicle_class,
         ]
         vehicle_id = int(veh_.url.split("/")[-2])
         result = insert_resource(
-            "vehicle",
-            "vehicle_id",
-            vehicle_id,
-            vehicles_columns,
-            vehicles_values
+            "vehicle", "vehicle_id", vehicle_id, vehicles_columns, vehicles_values
         )
         vehicles_data.append(veh_)
     return vehicles_data
@@ -240,16 +224,12 @@ def store_species():
             spe_.designation,
             spe_.eye_colors,
             spe_.hair_colors,
-            spe_.skin_colors
-            ]
+            spe_.skin_colors,
+        ]
 
         specie_id = int(spe_.url.split("/")[-2])
         result = insert_resource(
-            "species",
-            "species_id",
-            specie_id,
-            species_columns,
-            species_values
+            "species", "species_id", specie_id, species_columns, species_values
         )
         species_data.append(spe_)
     return species_data

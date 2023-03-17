@@ -18,13 +18,25 @@ def timeit(func):
 
 
 def some_heavy_work(range_):
-    return [i ** 2 for i in range(range_)]
+    return [i**2 for i in range(range_)]
 
 
 @timeit
 def main():
-    ranges = [10000001, 10000002, 10000003, 10000004, 10000005, 10000006,
-              10000071, 10000042, 10000053, 10000024, 10000035, 10000016]
+    ranges = [
+        10000001,
+        10000002,
+        10000003,
+        10000004,
+        10000005,
+        10000006,
+        10000071,
+        10000042,
+        10000053,
+        10000024,
+        10000035,
+        10000016,
+    ]
 
     pool = multiprocessing.Pool(4)
     pool.map(some_heavy_work, ranges)

@@ -38,7 +38,6 @@ def write_data_into_file(data: Dict) -> None:
     """writes dict data into a file"""
 
     with open("output.txt", "w") as fp:
-
         fp.write(json.dumps(data))
 
 
@@ -122,28 +121,48 @@ def starships_data_(data_: Dict, resource: str) -> List:
 
 
 def task_two():
-    """parse data to methods and fetch data according to user inputs. default = `characters` """
+    """parse data to methods and fetch data according to user inputs. default = `characters`"""
 
     parser = argparse.ArgumentParser(
         prog="starwarsAPI",
         usage="Fetches resources from swapi.dev for films based "
-              "on whatever arguments we provide",
+        "on whatever arguments we provide",
         description="It uses planet, characters, vehicles and uses requests library "
-                    "to get values from the swapi.dev for first film"
+        "to get values from the swapi.dev for first film",
     )
 
     # we are creating an option to get respective data
-    parser.add_argument('-c', '--char', type=str,
-                        default="characters",
-                        help="helps to fetch data of characters from first film")
-    parser.add_argument('-p', '--planet', type=str,
-                        help="helps to fetch data of planets from first film")
-    parser.add_argument('-v', '--vehicle', type=str,
-                        help="helps to fetch data of vehicles from first film")
-    parser.add_argument('-s', '--specie', type=str,
-                        help="helps to fetch data of species from first film")
-    parser.add_argument('-S', '--starship', type=str,
-                        help="helps to fetch data of starships from first film")
+    parser.add_argument(
+        "-c",
+        "--char",
+        type=str,
+        default="characters",
+        help="helps to fetch data of characters from first film",
+    )
+    parser.add_argument(
+        "-p",
+        "--planet",
+        type=str,
+        help="helps to fetch data of planets from first film",
+    )
+    parser.add_argument(
+        "-v",
+        "--vehicle",
+        type=str,
+        help="helps to fetch data of vehicles from first film",
+    )
+    parser.add_argument(
+        "-s",
+        "--specie",
+        type=str,
+        help="helps to fetch data of species from first film",
+    )
+    parser.add_argument(
+        "-S",
+        "--starship",
+        type=str,
+        help="helps to fetch data of starships from first film",
+    )
 
     arguments = parser.parse_args()
 
@@ -181,5 +200,4 @@ def task_two():
 
 
 if __name__ == "__main__":
-
     task_two()

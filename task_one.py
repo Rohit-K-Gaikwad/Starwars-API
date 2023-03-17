@@ -44,13 +44,13 @@ def generate_random_numbers(n: int = 15) -> list:
 def get_url(resource_id: int, resource: str) -> str:
     """
 
-   Args:
-       resource_id: for complete relative url
-       resource: for complete relative url
+    Args:
+        resource_id: for complete relative url
+        resource: for complete relative url
 
-   Returns: absolute url
+    Returns: absolute url
 
-   """
+    """
 
     home_url = "https://swapi.dev"
     relative_url = "/api/{}/{}"
@@ -60,33 +60,26 @@ def get_url(resource_id: int, resource: str) -> str:
 
 @timeit
 def task_one():
-
     parser = argparse.ArgumentParser(
         prog="starwarsAPI",
         usage="Fetches resources from swapi.dev based "
-              "on whatever arguments we provide",
+        "on whatever arguments we provide",
         description="It uses random number generator and uses requests library "
-                    "to get values from the swapi.dev"
+        "to get values from the swapi.dev",
     )
 
     # we are creating an option to provide count
-    parser.add_argument('-c', '--count',
-                        default=5,
-                        help="count of characters to fetch data from")
-    parser.add_argument('-s', '--start',
-                        default=1,
-                        help="start of the range")
-    parser.add_argument('-e', '--end',
-                        default=83,
-                        help="end of the range")
     parser.add_argument(
-        '-r',
-        '--resource',
+        "-c", "--count", default=5, help="count of characters to fetch data from"
+    )
+    parser.add_argument("-s", "--start", default=1, help="start of the range")
+    parser.add_argument("-e", "--end", default=83, help="end of the range")
+    parser.add_argument(
+        "-r",
+        "--resource",
         default="people",
         help="name of the resource",
-        choices=[
-            "people", "films", "starships", "vehicles", "species", "planets"
-        ]
+        choices=["people", "films", "starships", "vehicles", "species", "planets"],
     )
     arguments = parser.parse_args()
 
@@ -99,8 +92,9 @@ def task_one():
     resources = [element for element in obj]
     print(resources)
 
-    print(f"[ INFO ] produced {len(resources)}"
-          f" random resource ids in range(1, 83).")
+    print(
+        f"[ INFO ] produced {len(resources)}" f" random resource ids in range(1, 83)."
+    )
 
     data = []
     for resource_id in resources:
@@ -120,5 +114,4 @@ def task_one():
 
 
 if __name__ == "__main__":
-
     task_one()
