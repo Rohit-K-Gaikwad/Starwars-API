@@ -7,11 +7,7 @@ from typing import List, Dict, Union
 from requests import Response
 
 # logging configuration
-logging.basicConfig(
-    filename="utils/example.log",
-    encoding="utf-8",
-    level=logging.INFO
-)
+logging.basicConfig(filename="utils/example.log", encoding="utf-8", level=logging.INFO)
 
 
 def mylogger(func):

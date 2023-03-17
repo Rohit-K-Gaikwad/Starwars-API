@@ -18,7 +18,7 @@ import argparse
 from pprint import pprint
 from typing import Dict, List
 
-from utils.fetch_data import hit_url, fetch_data
+from utils.fetch_data import hit_url
 
 FIRST_FILM_URL = "https://swapi.dev/api/films/1/"
 
@@ -42,7 +42,7 @@ def write_data_into_file(data: Dict) -> None:
         fp.write(json.dumps(data))
 
 
-def characters_data(data_: Dict, resource: str) -> List:
+def characters_data_(data_: Dict, resource: str) -> List:
     """pull data from swapi characters name sequentially for first film"""
 
     characters = data_.get(resource)  # returns None by default
@@ -61,7 +61,7 @@ def characters_data(data_: Dict, resource: str) -> List:
     return char_names
 
 
-def planets_data(data_: Dict, resource: str) -> List:
+def planets_data_(data_: Dict, resource: str) -> List:
     """pull data from swapi planets name sequentially for first film"""
 
     planets = data_.get(resource)  # returns None by default
@@ -76,7 +76,7 @@ def planets_data(data_: Dict, resource: str) -> List:
     return planets_names
 
 
-def vehicles_data(data_: Dict, resource: str) -> List:
+def vehicles_data_(data_: Dict, resource: str) -> List:
     """pull data from swapi vehicles name sequentially for first film"""
 
     vehicles = data_.get("{}".format(resource))  # returns None by default
@@ -91,7 +91,7 @@ def vehicles_data(data_: Dict, resource: str) -> List:
     return vehicles_names
 
 
-def species_data(data_: Dict, resource: str) -> List:
+def species_data_(data_: Dict, resource: str) -> List:
     """pull data from swapi species name sequentially for first film"""
 
     species = data_.get("{}".format(resource))  # returns None by default
@@ -106,7 +106,7 @@ def species_data(data_: Dict, resource: str) -> List:
     return species_names
 
 
-def starships_data(data_: Dict, resource: str) -> List:
+def starships_data_(data_: Dict, resource: str) -> List:
     """pull data from swapi species name sequentially for first film"""
 
     starships = data_.get("{}".format(resource))  # returns None by default
@@ -155,27 +155,27 @@ def task_two():
     pprint(first_result)
 
     if arguments.char == "characters":
-        char_result = characters_data(first_result, arguments.char)
+        char_result = characters_data_(first_result, arguments.char)
         print(f"\nCharacters in First film: ", end="")
         pprint(char_result)
 
     if arguments.planet == "planets":
-        planet_result = planets_data(first_result, arguments.planet)
+        planet_result = planets_data_(first_result, arguments.planet)
         print(f"\nPlanets in First Film: ", end="")
         pprint(planet_result)
 
     if arguments.vehicle == "vehicles":
-        vehicle_result = vehicles_data(first_result, arguments.vehicle)
+        vehicle_result = vehicles_data_(first_result, arguments.vehicle)
         print(f"\nVehicles in First Film:", end="")
         pprint(vehicle_result)
 
     if arguments.specie == "species":
-        species_result = species_data(first_result, arguments.specie)
+        species_result = species_data_(first_result, arguments.specie)
         print(f"\nSpecies in First Film: ", end="")
         pprint(species_result)
 
     if arguments.starship == "starships":
-        starships_result = starships_data(first_result, arguments.starship)
+        starships_result = starships_data_(first_result, arguments.starship)
         print(f"\nStarships in First Film: ", end="")
         pprint(starships_result)
 

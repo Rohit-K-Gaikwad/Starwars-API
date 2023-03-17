@@ -6,8 +6,22 @@ from flask import Flask, Response
 from task_one import get_url
 from utils.randgen import ProduceNumbers
 from utils.fetch_data import hit_url
-from task_two import first_film_data, characters_data, planets_data, species_data, starships_data, vehicles_data
-from task_three import characters_data, films_data, planets_data, species_data, starships_data, vehicles_data
+from task_two import (
+    first_film_data,
+    characters_data_,
+    planets_data_,
+    species_data_,
+    starships_data_,
+    vehicles_data_,
+)
+from task_three import (
+    characters_data,
+    films_data,
+    planets_data,
+    species_data,
+    starships_data,
+    vehicles_data,
+)
 
 app = Flask(__name__)
 
@@ -19,18 +33,15 @@ def welcome():
 
 @app.route("/taskone/<resource>/<int:count>/<int:start>/<int:end>")
 def task_one(resource, count, start, end):
-
-    obj = ProduceNumbers(
-        start,
-        end,
-        count
-    )
+    obj = ProduceNumbers(start, end, count)
 
     resources = [element for element in obj]
     print(f"resources - {resources}")
 
-    print(f"[ INFO ] produced {len(resources)}"
-          f" random resource ids in range({start}, {end}).")
+    print(
+        f"[ INFO ] produced {len(resources)}"
+        f" random resource ids in range({start}, {end})."
+    )
 
     data = []
     for resource_id in resources:
@@ -48,10 +59,7 @@ def task_one(resource, count, start, end):
             # capturing name from dict object
             data.append(result.get("name"))
 
-    output = {
-        "count": len(data),
-        "names": data
-    }
+    output = {"count": len(data), "names": data}
 
     return Response(json.dumps(output), status=201, mimetype="application/json")
 
@@ -59,7 +67,6 @@ def task_one(resource, count, start, end):
 @app.route("/tasktwo")
 def task_two_welcome():
     first_result = first_film_data()
-    print("First Film Data")
     return Response(json.dumps(first_result), status=201, mimetype="application/json")
 
 
@@ -68,24 +75,24 @@ def task_two(resource):
     first_result = first_film_data()
 
     if resource == "characters":
-        char_result = characters_data(first_result, "characters")
-        return f"Characters in first film are : {char_result}"
+        char_result = characters_data_(first_result, "characters")
+        return Response(json.dumps(char_result), status=201, mimetype="application/json")
 
     if resource == "planets":
-        planet_result = planets_data(first_result, "planets")
-        return f"Planets in first film are : {planet_result}"
+        planet_result = planets_data_(first_result, "planets")
+        return Response(json.dumps(planet_result), status=201, mimetype="application/json")
 
     if resource == "vehicles":
-        vehicle_result = vehicles_data(first_result, "vehicles")
-        return f"Vehicles in first film are : {vehicle_result}"
+        vehicle_result = vehicles_data_(first_result, "vehicles")
+        return Response(json.dumps(vehicle_result), status=201, mimetype="application/json")
 
     if resource == "species":
-        species_result = species_data(first_result, "species")
-        return f"Species in first film are : {species_result}"
+        species_result = species_data_(first_result, "species")
+        return Response(json.dumps(species_result), status=201, mimetype="application/json")
 
     if resource == "starships":
-        starships_result = starships_data(first_result, "starships")
-        return f"Starships in first film are : {starships_result}"
+        starships_result = starships_data_(first_result, "starships")
+        return Response(json.dumps(starships_result), status=201, mimetype="application/json")
 
 
 @app.route("/taskthree/<resource>")
@@ -97,32 +104,32 @@ def task_three(resource, limit=3, start=1, end=8):
     starship_data = []
     vehicle_data = []
 
-    obj = ProduceNumbers(start, end, limit-1)
+    obj = ProduceNumbers(start, end, limit - 1)
 
     random_resources_numbers = [element for element in obj]
 
     for number in random_resources_numbers:
-        if resource == 'films':
+        if resource == "films":
             data = hit_url(films_data()[number])
             data = data.json()
             film_data.append(data)
 
-        if resource == 'planets':
+        if resource == "planets":
             data = hit_url(planets_data()[number])
             data = data.json()
             planet_data.append(data)
 
-        if resource == 'species':
+        if resource == "species":
             data = hit_url(species_data()[number])
             data = data.json()
             specie_data.append(data)
 
-        if resource == 'starships':
+        if resource == "starships":
             data = hit_url(starships_data()[number])
             data = data.json()
             starship_data.append(data)
 
-        if resource == 'vehicles':
+        if resource == "vehicles":
             data = hit_url(vehicles_data()[number])
             data = data.json()
             vehicle_data.append(data)
