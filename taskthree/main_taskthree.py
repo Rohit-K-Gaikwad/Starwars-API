@@ -21,7 +21,7 @@ def welcome():
 
 
 @v3.route("/taskthree/<resource>")
-def task_three(resource, limit=3, start=1, end=8):
+def task_three(resource, limit=3, start=0, end=6):
     char_data = []
     film_data = []
     planet_data = []
@@ -65,14 +65,20 @@ def task_three(resource, limit=3, start=1, end=8):
             char_data.append(data)
 
     if resource == "characters":
-        return Response(char_data, status="201", mimetype="application/json")
+        char_response = {"count": len(char_data), "characters": char_data}
+        return char_response
     if resource == "films":
-        return film_data
+        films_response = {"count": len(film_data), "films": film_data}
+        return films_response
     if resource == "planets":
-        return planet_data
+        planets_response = {"count": len(planet_data), "planets": planet_data}
+        return planets_response
     if resource == "species":
-        return specie_data
+        species_response = {"count": len(specie_data), "species": specie_data}
+        return species_response
     if resource == "starships":
-        return starship_data
+        starships_response = {"count": len(starship_data), "starships": starship_data}
+        return starships_response
     if resource == "vehicles":
-        return vehicle_data
+        vehicles_response = {"count": len(vehicle_data), "vehicles": vehicle_data}
+        return vehicles_response

@@ -1,6 +1,6 @@
 import requests
 import json
-from flask import Blueprint,Response
+from flask import Blueprint, Response
 from task_one import get_url
 from utils.randgen import ProduceNumbers
 

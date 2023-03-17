@@ -8,15 +8,13 @@ app = Flask(__name__)
 
 
 # register all the sub-applications here
-app.register_blueprint(v1)   # /v1/taskone
-app.register_blueprint(v2)   # /v2/tasktwo
-app.register_blueprint(v3)   # /v3/taskthree
+app.register_blueprint(v1)  # /v1/taskone
+app.register_blueprint(v2)  # /v2/tasktwo
+app.register_blueprint(v3)  # /v3/taskthree
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=9000, debug=True)
-
-
+    app.run(host="localhost", port=4000, debug=True)
 
 
 # TODO

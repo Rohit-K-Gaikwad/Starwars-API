@@ -25,20 +25,30 @@ def task_two(resource):
 
     if resource == "characters":
         char_result = characters_data_(first_result, "characters")
-        return Response(json.dumps(char_result), status=201, mimetype="application/json")
+        return Response(
+            json.dumps(char_result), status=201, mimetype="application/json"
+        )
 
     if resource == "planets":
         planet_result = planets_data_(first_result, "planets")
-        return Response(json.dumps(planet_result), status=201, mimetype="application/json")
+        return Response(
+            json.dumps(planet_result), status=201, mimetype="application/json"
+        )
 
     if resource == "vehicles":
         vehicle_result = vehicles_data_(first_result, "vehicles")
-        return Response(json.dumps(vehicle_result), status=201, mimetype="application/json")
+        return Response(
+            json.dumps(vehicle_result), status=201, mimetype="application/json"
+        )
 
     if resource == "species":
         species_result = species_data_(first_result, "species")
-        return Response(json.dumps(species_result), status=201, mimetype="application/json")
+        return Response(
+            json.dumps(species_result), status=201, mimetype="application/json"
+        )
 
     if resource == "starships":
         starships_result = starships_data_(first_result, "starships")
-        return Response(json.dumps(starships_result), status=201, mimetype="application/json")
+        return Response(
+            json.dumps(starships_result), status=201, mimetype="application/json"
+        )
