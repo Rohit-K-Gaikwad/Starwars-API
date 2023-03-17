@@ -17,13 +17,3 @@ if __name__ == "__main__":
     app.run(host="localhost", port=4000, debug=True)
 
 
-# TODO
-"""
-1. convert swapi project task1, task2, task3 into Blueprints
-2. register all blueprints with main application
-3. endpoints will be like following
-
-    - 127.0.0.1:8000/v1/taskone
-    - 127.0.0.1:8000/v2/tasktwo
-    - 127.0.0.1:8000/v3/taskthree
-"""
