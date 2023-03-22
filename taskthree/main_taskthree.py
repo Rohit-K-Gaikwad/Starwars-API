@@ -66,7 +66,7 @@ def task_three(resource, limit=3, start=0, end=6):
 
     if resource == "characters":
         char_response = {"count": len(char_data), "characters": char_data}
-        return char_response
+        return Response(json.dumps(char_response), status=201, mimetype="application/json")
     if resource == "films":
         films_response = {"count": len(film_data), "films": film_data}
         return films_response

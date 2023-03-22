@@ -15,5 +15,3 @@ app.register_blueprint(v3)  # /v3/taskthree
 
 if __name__ == "__main__":
     app.run(host="localhost", port=4000, debug=True)
-
-
