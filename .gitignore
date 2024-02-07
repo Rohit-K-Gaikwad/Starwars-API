@@ -6,3 +6,8 @@ venv
 output.txt
 .idea
 .ipynb_checkpoints
+
+Example Usage of Train List Retrieval FunctionScenario: Suppose you need to fetch a list of trains for a specific route and date within your application. You want to demonstrate how the get_trains_list_response function can be used to achieve this task.Steps:Prepare Request Parameters:Origin: New Delhi (Station Code: NDLS)Destination: Mumbai Central (Station Code: MMCT)Date of Travel: February 10, 2024Class of Travel: 3rd ACBooking Quota: GeneralTrain Type: All TypesInclude Local Trains: YesSimulate User Request:Create an example HTTP request object.Set the request parameters accordingly using the GET method.Fetch Train List:Call the get_trains_list_response function with the prepared request parameters.The function will retrieve the list of trains based on the provided criteria.Process Response:Check if any error occurred during the process.If no error occurred, iterate over the retrieved train list.Display relevant information for each train, such as train number, name, and departure time.Example Output:Train Number: 12951, Train Name: Mumbai Rajdhani Express, Departure Time: 16:00
+Train Number: 12953, Train Name: August Kranti Rajdhani Express, Departure Time: 17:40
+Train Number: 12955, Train Name: Mumbai Central - Jaipur Superfast Express, Departure Time: 15:45
+... (Additional trains listed here)
